@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem; // यो पहिले नै छ, एकदम राम्रो!
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // [UPDATE]: पुरानो Input.GetKeyDown लाई नयाँ Input System को कोडसँग बदलेको
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (isPaused)
             {
